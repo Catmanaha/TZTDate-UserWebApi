@@ -64,7 +64,7 @@ public class UserController : ControllerBase
         return Ok(new AccountDto
         {
             User = userWithAddress,
-            Interests = interests,
+            Interests = interests ?? "",
             ImageUris = ImageUris
         });
     }
@@ -105,7 +105,7 @@ public class UserController : ControllerBase
             ImageUris.Add(securePath);
         }
 
-        return Ok(new { User = user, Interests = interests, ImageUris, MyUser = currentUser });
+        return Ok(new { User = user, Interests = interests ?? "", ImageUris, MyUser = currentUser });
     }
 
 

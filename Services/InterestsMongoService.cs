@@ -24,9 +24,12 @@ public class InterestsMongoService : IInterestsService
             .Find(x => x.UserId == userId)
             .FirstOrDefaultAsync();
 
-        ;
+        if (userInterests is null) {
+            return "";
+        }
+        
 
-        return string.Join(", ", userInterests.Interests) ?? "";
+        return string.Join(", ", userInterests.Interests);
     }
 
     public async Task SetInterestsAsync(int userId, IEnumerable<string> interests)
